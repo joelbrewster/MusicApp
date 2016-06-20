@@ -1,2 +1,8 @@
 *.mp3
 *.cache
+
+*.log
+
+tmp/pids/server.pid
+
+log/development.log
