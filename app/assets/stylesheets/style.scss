@@ -1,3 +1,6 @@
+body {
+  background: RGBA(7, 14, 31, 1.00);
+}
 // div#mp3_player {
 //   width: 500px;
 //   height: 60px;
@@ -8,7 +11,6 @@
 
 div#mp3_player > div > audio {
   // width: 500px;
-  background: black;
   // float: left;
   width: 100%;
 }
@@ -20,7 +22,7 @@ div#mp3_player > canvas {
   // height: 100vh;
   // background: url("https://s32.postimg.org/esogqna8l/Disco_background.jpg");
   // background: url("https://s32.postimg.org/jjr4659bp/Twitter_background_retro_disco_pattern_backgroun.jpg");
-  background-position: center;
-  background-size: cover;
-  float: left;
+  // background-position: center;
+  // background-size: cover;
+  // float: left;
 }
