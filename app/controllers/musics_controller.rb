@@ -1,7 +1,7 @@
 class MusicsController < ApplicationController
   before_action :set_music, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  
+
   # GET /musics
   # GET /musics.json
   def index
@@ -15,7 +15,7 @@ class MusicsController < ApplicationController
 
   # GET /musics/new
   def new
-    @music = Music.new
+    @music = current_user.music.build
   end
 
   # GET /musics/1/edit
@@ -25,7 +25,7 @@ class MusicsController < ApplicationController
   # POST /musics
   # POST /musics.json
   def create
-    @music = Music.new(music_params)
+    @music = current_user.music.build(music_params)
 
     respond_to do |format|
       if @music.save

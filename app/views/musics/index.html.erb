@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Uploader</th>
       <th>Image</th>
       <th>Document</th>
       <th>Audio</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @musics.each do |music| %>
       <tr>
+        <td><%= music.user.user_name %></td>
         <td><%= music.image %></td>
         <td><%= music.document %></td>
         <td><audio id = "audio" autoplay>
@@ -22,10 +24,14 @@
             </audio>
         </td>
         <p class="<%=music.id%>"><%= link_to image_tag(music.image.url(:thumb)), music %> </p>
-
         <td><%= link_to 'Show', music %></td>
-        <td><%= link_to 'Edit', edit_music_path(music) %></td>
-        <td><%= link_to 'Destroy', music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if music.user.id == current_user.id %>
+          <div class="text-center edit-links">
+            <td><%= link_to 'Edit', edit_music_path(music) %></td>
+            |
+            <td><%= link_to 'Destroy', music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
