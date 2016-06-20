@@ -290,7 +290,7 @@ function drawAverageCircle() {
 
     if (avg > AVG_BREAK_POINT) {
         rotation += -bubble_avg_tick;
-        value = avg + random() * 10;
+        value = avg + random() * 100;
         ctx.strokeStyle = bubble_avg_line_color_2;
         ctx.fillStyle = bubble_avg_color_2;
     } else {
@@ -301,7 +301,7 @@ function drawAverageCircle() {
     }
 
     ctx.beginPath();
-    ctx.lineWidth = 1;
+    ctx.lineWidth = .5;
     ctx.lineCap = "round";
 
     ctx.save();
@@ -352,7 +352,7 @@ function drawWaveform() {
     }
 
     ctx.beginPath();
-    ctx.lineWidth = 1;
+    ctx.lineWidth = .5;
     ctx.lineCap = "round";
 
     ctx.save();
