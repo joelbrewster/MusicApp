@@ -1,2 +1,5 @@
 *.mp3
 *.cache
+/tmp/
+
+*.cache
