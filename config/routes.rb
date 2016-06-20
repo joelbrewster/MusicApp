@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get '/music/:id/audio' => 'musics#get_audio'
     resources :musics do
     end
+  end
 
   root to: "musics#index"
 end
