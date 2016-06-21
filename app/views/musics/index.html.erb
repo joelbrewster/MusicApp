@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>Listing Musics</h1>
 
@@ -10,9 +10,9 @@
       <th>Audio</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+  </thead> -->
 
-  <tbody>
+  <!-- <tbody>
     <% @musics.each do |music| %>
       <tr>
         <td><%= music.image %></td>
@@ -34,3 +34,29 @@
 <br>
 
 <%= link_to 'New Music', new_music_path %>
+
+
+<ul class="collection">
+  <li class="collection-item avatar">
+
+    <% @musics.each do |music| %>
+      <span class="title"><%=music.audio_file_name%></span>
+      <p>Description <br>
+         This is how I feel
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    <%end%>
+  </li>
+</ul> -->
+
+
+
+<ul class="collection with-header ul-music-list">
+  <% @musics.each do |music| %>
+    <li class="collection-item li-music"><div><%=music.audio_file_name%>
+      <%= link_to music, class: 'secondary-content music-link' do %>
+        <i class="material-icons">play_arrow</i>
+      <%end%>
+    </li>
+  <% end %>
+</ul>
