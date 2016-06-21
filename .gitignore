@@ -6,3 +6,7 @@
 tmp/pids/server.pid
 
 log/development.log
+
+*.log
+
+*.pid
