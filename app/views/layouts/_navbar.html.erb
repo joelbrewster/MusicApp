@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default">
+<%# <nav class="navbar navbar-default"> %>
+<nav class="right hide-on-med-and-down">
   <div class="container-fluid navbar-container">
     <div class="navbar-header">
       <button class="navbar-toggle collapsed" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button">
@@ -11,7 +12,8 @@
       </div>
     </div>
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
+        <%# <ul class="nav navbar-nav navbar-right"> %>
+        <ul id="slide-out" class="side-nav">
             <% if user_signed_in? %>
               <li>
                 <%= link_to "New Post", new_music_path %>

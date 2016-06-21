@@ -1,12 +1,14 @@
-<p id="notice"><%= notice %></p>
-<div id="mp3_player">
-  <div id="audio_box"></div>
-  <canvas id="analyser_render"</canvas>
+<%# <p id="notice"><%= notice %1></p> %>
+<%# <div id="mp3_player"> %>
+<%#   <1%# <div id="audio_box"></div> %1> %>
+<%#   <canvas id="analyser_render"</canvas> %>
+<%# </div> %>
+
+
+<div class="side-nav">
+  <%= link_to 'Edit', edit_music_path(@music) %> |
+  <%= link_to 'Back', musics_path %>
 </div>
-
-
-<%= link_to 'Edit', edit_music_path(@music) %> |
-<%= link_to 'Back', musics_path %>
 
 <script>
 var audio = new Audio();
@@ -192,6 +194,7 @@ function createAudioControls() {
     var playButton = document.createElement('a');
 
     playButton.setAttribute('id', 'playcontrol');
+    <%# Audio controller section %>
     playButton.textContent = "pause";
     document.body.appendChild(playButton);
 
