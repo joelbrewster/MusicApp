@@ -42,100 +42,99 @@
       <%# // frameLooper() animates any style of graphics you wish to the audio frequency %>
       <%# // Looping at the default frame rate that the browser provides(approx. 60 FPS) %>
       <%# function frameLooper(){ %>
-          <%# 	window.requestAnimationFrame(frameLooper); %>
-            <%# 	fbc_array = new Uint8Array(analyser.frequencyBinCount); %>
-            <%# 	analyser.getByteFrequencyData(fbc_array); %>
-            <%# 	ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas %>
-          <%# 	 ctx.fillStyle = 'rgba(163, 48, 155, 0.5)'; // Color of the bars %>
-          <%# 	bars = 100; %>
-            <%# 	for (var i = 0; i < bars; i++) { %>
-                <%# 		bar_x = i * 4; %>
-                  <%# 		bar_width = 3; %>
-                  <%# 		bar_height = -(fbc_array[i] / 2); %>
-                  <%# 		//  fillRect( x, y, width, height ) // Explanation of the parameters below %>
-                  <%#     ctx.fillRect(bar_x, canvas.height, bar_width, bar_height); %>
-                  <%#     	} %>
-                  <%#     } %>
-                  <%#   } %>
+      <%#   window.requestAnimationFrame(frameLooper); %>
+      <%#   fbc_array = new Uint8Array(analyser.frequencyBinCount); %>
+      <%#   analyser.getByteFrequencyData(fbc_array); %>
+      <%#   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas %>
+      <%#   ctx.fillStyle = 'rgba(163, 48, 155, 0.5)'; // Color of the bars %>
+      <%#   bars = 100; %>
+      <%#   for (var i = 0; i < bars; i++) { %>
+      <%#     bar_x = i * 4; %>
+      <%#     bar_width = 3; %>
+      <%#     bar_height = -(fbc_array[i] / 2); %>
+      <%#     //  fillRect( x, y, width, height ) // Explanation of the parameters below %>
+      <%#     ctx.fillRect(bar_x, canvas.height, bar_width, bar_height); %>
+      <%#   } %>
+      <%# } %>
 
-                  var media = [
-                    '<%= @music.audio %>'
-                  ],
-                  fftSize = 2048,
+var media = [
+  '<%= @music.audio %>'
+],
+  fftSize = 2048,
 
-                  background_color = "rgba(0, 0, 0, 0)",
-                  background_gradient_color_1 = "#070E21",
-                  background_gradient_color_2 = "#070503",
-                  background_gradient_color_3 = "#0B1708",
+  background_color = "rgba(0, 0, 0, 0)",
+  background_gradient_color_1 = "#070E21",
+  background_gradient_color_2 = "#070503",
+  background_gradient_color_3 = "#0B1708",
 
-                  stars_color = "#ba55d3",
-                  stars_color_2 = "#d02090",
-                  stars_color_special = "#a020f0",
-                  TOTAL_STARS = 1500,
-                  STARS_BREAK_POINT = 140,
-                  stars = [],
+  stars_color = "#ba55d3",
+  stars_color_2 = "#d02090",
+  stars_color_special = "#a020f0",
+  TOTAL_STARS = 1500,
+  STARS_BREAK_POINT = 140,
+  stars = [],
 
-                  waveform_color = "RGBA(234, 34, 194, .050)",
-                  waveform_color_2 = "rgba(0,0,0,0)",
-                  waveform_line_color = "RGBA(144, 57, 128, .10)",
-                  waveform_line_color_2 = "RGBA(231, 7, 20, .80)",
-                  waveform_tick = 0.05,
-                  TOTAL_POINTS = fftSize / 2,
-                  points = [],
+  waveform_color = "RGBA(234, 34, 194, .050)",
+  waveform_color_2 = "rgba(0,0,0,0)",
+  waveform_line_color = "RGBA(144, 57, 128, .10)",
+  waveform_line_color_2 = "RGBA(231, 7, 20, .80)",
+  waveform_tick = 0.05,
+  TOTAL_POINTS = fftSize / 2,
+  points = [],
 
-                  bubble_avg_color = "rgba(29, 36, 57, 0.1)",
-                  bubble_avg_color_2 = "rgba(29, 36, 57, 0.05)",
-                  bubble_avg_line_color = "rgba(77, 218, 248, 1)",
-                  bubble_avg_line_color_2 = "rgba(77, 218, 248, 1)",
-                  bubble_avg_tick = 0.001,
-                  TOTAL_AVG_POINTS = 64,
-                  AVG_BREAK_POINT = 100,
-                  avg_points = [],
+  bubble_avg_color = "rgba(29, 36, 57, 0.1)",
+  bubble_avg_color_2 = "rgba(29, 36, 57, 0.05)",
+  bubble_avg_line_color = "rgba(77, 218, 248, 1)",
+  bubble_avg_line_color_2 = "rgba(77, 218, 248, 1)",
+  bubble_avg_tick = 0.001,
+  TOTAL_AVG_POINTS = 64,
+  AVG_BREAK_POINT = 100,
+  avg_points = [],
 
-                  SHOW_STAR_FIELD = true,
-                  SHOW_WAVEFORM = true,
-                  SHOW_AVERAGE = true,
+  SHOW_STAR_FIELD = true,
+  SHOW_WAVEFORM = true,
+  SHOW_AVERAGE = true,
 
-                  AudioContext = (window.AudioContext || window.webkitAudioContext),
-                  floor = Math.floor,
-                  round = Math.round,
-                  random = Math.random,
-                  sin = Math.sin,
-                  cos = Math.cos,
-                  PI = Math.PI,
-                  PI_TWO = PI * 2,
-                  PI_HALF = PI / 180,
+  AudioContext = (window.AudioContext || window.webkitAudioContext),
+  floor = Math.floor,
+  round = Math.round,
+  random = Math.random,
+  sin = Math.sin,
+  cos = Math.cos,
+  PI = Math.PI,
+  PI_TWO = PI * 2,
+  PI_HALF = PI / 180,
 
-                  w = 0,
-                  h = 0,
-                  cx = 0,
-                  cy = 0,
+  w = 0,
+  h = 0,
+  cx = 0,
+  cy = 0,
 
-                  playing = false,
-                  startedAt, pausedAt,
+  playing = false,
+  startedAt, pausedAt,
 
-                  rotation = 0,
-                  <%# msgElement = document.querySelector('#loading .msg'), %>
-                  avg, ctx, actx, asource, gainNode, analyser, frequencyData, frequencyDataLength, timeData;
-
-
-                  window.addEventListener('load', initialize, false);
-                  window.addEventListener('resize', resizeHandler, false);
+  rotation = 0,
+  <%# msgElement = document.querySelector('#loading .msg'), %>
+  avg, ctx, actx, asource, gainNode, analyser, frequencyData, frequencyDataLength, timeData;
 
 
-                  function initialize() {
-                    if (!AudioContext) {
-                      return featureNotSupported();
-                    }
+  window.addEventListener('load', initialize, false);
+  window.addEventListener('resize', resizeHandler, false);
 
-                    ctx = document.createElement('canvas').getContext('2d');
-                    actx = new AudioContext();
 
-                    document.body.appendChild(ctx.canvas);
+  function initialize() {
+    if (!AudioContext) {
+      return featureNotSupported();
+    }
 
-                    resizeHandler();
-                    initializeAudio();
-                  }
+    ctx = document.createElement('canvas').getContext('2d');
+    actx = new AudioContext();
+
+    document.body.appendChild(ctx.canvas);
+
+    resizeHandler();
+    initializeAudio();
+  }
 
 function featureNotSupported() {
   hideLoader();
@@ -191,7 +190,7 @@ function initializeAudio() {
 }
 
 function createAudioControls() {
-  var playButton = document.createElement('a');
+  var playButton = document.createEl
 
   playButton.setAttribute('id', 'playcontrol');
   <%# Audio controller section %>
